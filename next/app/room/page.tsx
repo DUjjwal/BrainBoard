@@ -52,10 +52,16 @@ export default function Home() {
                     <input type="text" id="first_name" value={roomId} className = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Room ID" required onChange={(e) => {
                         setRoomId(e.target.value)
                     }}/>
-                    <button type="submit" className = "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-fullpx-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => {
+                    <button type="submit" className = "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-fullpx-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={async () => {
+                        //check if its a valid roomName present in DB also
+                        //if yes set the roomId in localstorage
                         if(roomId === '')return;
                         localStorage.setItem('roomid', roomId)
                         router.push("/canvas")
+                        
+
+
+                        
                     }}>Join Room</button>
                     <div className = "inline-flex items-center justify-center w-full">
                         <hr className = "w-64 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700"/>
